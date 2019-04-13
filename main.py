@@ -25,10 +25,16 @@ def move():
     if inpu.lower() == 'w':
         if y==0:
             pass
+        elif l[1][2]=="K" and l[2][3]=="E" and l[2][2]=="P":
+            
+            l[y][x]="-"
+            y-=1
         
+            print("You've just picked up a key !!!")
         elif "P"==l[3][3] and "K"==l[1][2]:
             l[y][x]="P"
             l[y-1][x]="E"
+            print("You can't exit,please acquire the key(s) first")
 
         else:
             l[y][x] = '-'
@@ -38,17 +44,29 @@ def move():
     elif inpu.lower() == 'a':
         if x==0:
             pass
+        elif l[1][2]=="K" and l[2][3]=="E" and l[1][3]=="P":
+            
+            l[y][x]="-"
+            x-=1
+        
+            print("You've just picked up a key !!!")
         else:
             l[y][x] = '-'
             x -= 1
         
-            
     elif inpu.lower() == 's':
         if y==3:
             pass
+        elif l[1][2]=="K" and l[2][3]=="E" and l[0][2]=="P":
+            
+            l[y][x]="-"
+            y+=1
+            print("You've just picked up a key !!!")
         elif "P"==l[1][3] and "K"==l[1][2]:
             l[y][x]="P"
             l[y+1][x]="E"
+            print("You can't exit,please acquire the key(s) first")
+        
 
         
         else:
@@ -58,22 +76,28 @@ def move():
     elif inpu.lower() == 'd':
         if x == 3:
             pass
+        elif l[1][2]=="K" and l[2][3]=="E" and l[1][1]=="P":
+            
+            l[y][x]="-"
+            x+=1
+            print("You've just picked up a key !!!")
         elif "P"==l[2][2] and "K"==l[1][2]:
             l[y][x]="P"
             l[y][x+1]="E"
+            print("You can't exit,please acquire the key(s) first")
             
         else:
             l[y][x] = '-'
             x += 1
     l[y][x] = 'P'
     array(l)
-    if l[1][2]=="P" and l[2][3]=="E":
+    # if l[1][2]!="K" and l[2][3]=="E":
         
-        print("You've just picked up a key !!!")
+    #     print("You've just picked up a key !!!")
     
     if l[2][3]!="E" and l[1][2]!="K":
         print("Congrats, you've just escaped the dungeon")
         break
-    if ((l[3][3]=="P" and inpu.lower()=="w")or(l[2][2]=="P" and inpu.lower()=="d")or(l[1][3]=="P" and inpu.lower()=="s")) and l[1][2]=="K":
-        print("You can't exit,please acquire the key(s) first")
+    # if (l[3][3]=="P"or l[2][2]=="P" or l[1][3]=="P") and l[1][2]=="K":
+    #     print("You can't exit,please acquire the key(s) first")
 move()
